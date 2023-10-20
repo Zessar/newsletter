@@ -1,0 +1,182 @@
+@import 'variables', 'mixins';
+
+@font-face {
+@include font-face('Roboto-Regular', 'Roboto.ttf', 400);
+@include font-face('Roboto-Bold', 'Roboto.ttf', 700);
+}
+
+:root {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: $dark-slate;
+body{
+    background: $white;
+    border-radius: 25px;
+    width: 900px;
+    padding: 1em;
+    margin: 10em auto;
+    font-size: 16px;
+    font-family: 'Roboto-Regular', sans-serif;
+    line-height: 1.4em;
+    color: $dark-slate;
+    @include grid (1, 2 1fr, center, none, 0);
+    .header {
+        .header__img-desktop {
+        display: block;
+    }
+        grid-area: 1 / 2 / span 1 / span 1;
+        .header__img-mobile {
+            display: none;
+    }
+    }
+    .main {
+        @include flex(flex, column);
+        justify-content: center;
+        margin: 0 4.5em;
+    .section__main {
+        display: block;
+    .main__h1 {
+        text-align: left;
+        margin: 0 0 1em 0;
+        font-size: 3.2em;
+    }
+    .main__span {
+        @include flex(flex, row);
+        gap: 20px;
+        .span__p {
+            margin: 0.6em 0;
+        }
+    }
+    .form {
+        @include flex(flex, column);
+        .label {
+            display: block;
+            font-weight: 700;
+            font-size: 0.8em;
+            margin: 1.5em 0 0 0;
+            position: relative;
+            .mensaje {
+                display: none;
+                color: $orange;
+                font-style: italic;
+                font-weight: 400;
+                position: absolute;
+                top: 0;
+                right: 10px;
+            }
+            .block {
+                display: block;
+            }
+        }
+        .input {
+            padding: 1em 0 1em 1em;
+            border-radius: 7px;
+            border: 1px solid $gray;
+            margin: 0.5em 0 1.5em 0;
+                &:focus {
+                    outline: none;
+                    border: 1px solid $dark-slate;
+                }
+        }
+        .button {
+            @include button (1em 0 1em 1em, 7px, none, $charcoal-grey, $white, linear-gradient(to right, $tomato, $orange), 1px 5px 15px 5px);
+            transition: all 0.4s ease-in-out;
+            }
+        }
+    }
+    .confirmation {
+        display: none;
+        width: 80%;
+        margin: 0 auto;
+        background-color: $white;
+        border-radius: 25px;
+        padding: 3em 4em;
+        .img {
+            width: 70px;
+            height: 70px;
+        }
+        h2 {
+            font-size: 3.5em;
+            line-height: 1em;
+        }
+        button {
+            width: 100%;
+            margin-top: 1em;
+            @include button (1.5em 1em 1.5em 1em, 7px, none, $charcoal-grey, $white, linear-gradient(to right, $tomato, $orange), 1px 5px 15px 5px);
+            transition: all 0.4s ease-in-out;
+        }
+        }
+    }
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .body {
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        border-radius: 0;
+        grid-template-rows: 32% 68%;
+        grid-template-columns: 1 1fr;
+        .header {
+            grid-area: 1 / 1 / span 1 / span 1;
+            .header__img-desktop {
+                display: none;
+            }
+            .header__img-mobile {
+                display: block;
+                width: 100%;
+            }
+        }
+        .main {
+            justify-content: start;
+            margin: 0;
+            .section__main {
+                margin: 1em 2em 0 2em;
+                .main__h1 {
+                    margin: 1em 0 0 0;
+                    line-height: 1.4em;
+                    font-size: 2.5em;
+                }
+                .form {
+                    margin-top: 1em;
+                    .input {
+                        padding: 1.5em 0 1.5em 2em;
+                    }
+                    .button {
+                        padding: 1.5em 0 1.5em 2em;
+                    }
+                }
+            }
+            .confirmation {
+                grid-area: 1 / 1 / span 2 / span 1;
+                width: calc(100% - 3em);
+                border-radius: 0;
+                padding: 1em 1.5em;
+                .img {
+                    margin: 9em 0 1em 0;
+                }
+                h2 {
+                    font-size: 3em;
+                }
+                p {
+                    width: 100%;
+                    margin: 5em 0;
+                }
+                .conf__button {
+                    font-size: 1.2em;
+                    @include button (1em 0, 7px, none, $charcoal-grey, $white, linear-gradient(to right, $tomato, $orange), 1px 5px 15px 5px);
+                    margin: 11.3em 0 2em 0;
+                }
+            }
+        }
+        footer {
+            display: none;
+        }
+    }
+}

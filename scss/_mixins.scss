@@ -1,0 +1,36 @@
+@import 'variables';
+
+@mixin font-face ($family, $filename, $weight) {
+    @font-face {
+        font-family: $family;
+        src: url(#{$font-path}-#{$filename}) format('truetype');
+        font-weight: $weight;
+    }
+}
+
+@mixin grid ($rows, $column, $position, $Position, $gap) {
+    display: grid;
+    grid-template-rows: $rows;
+    grid-template-columns: $column;
+    justify-content: $position;
+    align-content: $Position;
+    gap: $gap;
+}
+
+@mixin flex ($display, $direction) {
+    display: $display;
+    flex-direction: $direction;
+
+}
+
+@mixin button ($em, $px, $value, $bgColor, $color, $bgColorHover, $xy-Hover) {
+    padding: $em;
+    border-radius: $px;
+    border: $value;
+    background-color: $bgColor;
+    color: $color;
+        &:hover {
+            background-image: $bgColorHover;
+            box-shadow: $xy-Hover hsla(0, 0%, 0%, 0.282);
+        }
+}
